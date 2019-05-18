@@ -1,0 +1,323 @@
+<!DOCTYPE HTML>
+<html lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="ZIXU SPACE">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+    <meta name="keywords" content>
+
+
+    <meta name="description" content="原文地址(https://socket.io/docs/rooms-and-namespaces/)
+命名空间Socket.IO允许你用“命名空间”限定你的socket连接，这实际上意味着分配不...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>socket.io官方文档翻译3 | ZIXU SPACE</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="ZIXU SPACE" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/img/bannerImg.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="John Xu">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">ZIXU SPACE</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/理财/"><i class="fa "></i>理财</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/数据/"><i class="fa "></i>数据</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="socket.io官方文档翻译3">
+            
+	            socket.io官方文档翻译3
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/后端/">后端</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/05/18</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>原文地址(<a href="https://socket.io/docs/rooms-and-namespaces/" target="_blank" rel="noopener">https://socket.io/docs/rooms-and-namespaces/</a>)</p>
+<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>Socket.IO允许你用“命名空间”限定你的socket连接，这实际上意味着分配不同的端点或路径。</p>
+<p>这是一个非常有用的功能，通过引入通信通道之间的分离，可以最大限度地减少资源数量（TCP连接），并同时区分应用程序中的关系。</p>
+<h3 id="默认命名空间"><a href="#默认命名空间" class="headerlink" title="默认命名空间"></a>默认命名空间</h3><p>我们默认的命名空间为/，默认情况下Socket.IO客户端连接到这个命名空间，服务器也侦听的这个命名空间。</p>
+<p>这个命名空间由io.sockets或io标识：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// the following two will emit to all the sockets connected to `/`</span></span><br><span class="line"></span><br><span class="line">io.sockets.emit(<span class="string">'hi'</span>, <span class="string">'everyone'</span>);</span><br><span class="line">io.emit(<span class="string">'hi'</span>, <span class="string">'everyone'</span>); <span class="comment">// short form</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="自定义命名空间"><a href="#自定义命名空间" class="headerlink" title="自定义命名空间"></a>自定义命名空间</h3><p>在服务器端可以通过调用of函数来设置一个自定义命名空间<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nsp = io.of(<span class="string">'/my-namespace'</span>);</span><br><span class="line">nsp.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">socket</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'someone connected'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">nsp.emit(<span class="string">'hi'</span>, <span class="string">'everyone!'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>在客服端，设置socket.io客服端连接到这个命名空间<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> socket = io(<span class="string">'/my-namespace'</span>);</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：命名空间是Socket.IO协议的实现细节，与底层传输的实际URL无关，默url为/socket.io/…。</p>
+</blockquote>
+<h3 id="房间"><a href="#房间" class="headerlink" title="房间"></a>房间</h3><p>在每个命名空间中，你也可以定义任意的通道，使得每个sockets都可以join和leave。</p>
+<h3 id="加入和离开"><a href="#加入和离开" class="headerlink" title="加入和离开"></a>加入和离开</h3><p>你可以通过调用join来使得socket连接到指定的通道：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">socket</span>)</span>&#123;</span><br><span class="line">  socket.join(<span class="string">'some room'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>接下来在广播和发送信息时，只需要简单地使用to或者in(这两者是一样的)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">io.to(<span class="string">'some room'</span>).emit(<span class="string">'some event'</span>);</span><br></pre></td></tr></table></figure></p>
+<h3 id="默认房间"><a href="#默认房间" class="headerlink" title="默认房间"></a>默认房间</h3><p>Socket.IO中的每个Socket都由一个随机的，不可猜测的唯一标识符Socket#id来标识。为了方便，每个socket都会自动加入由此ID标识的房间。<br>这样更加容易把信息广播给其他的socket连接<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">socket</span>)</span>&#123;</span><br><span class="line">  socket.on(<span class="string">'say to someone'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">id, msg</span>)</span>&#123;</span><br><span class="line">    socket.broadcast.to(id).emit(<span class="string">'my message'</span>, msg);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="断开连接"><a href="#断开连接" class="headerlink" title="断开连接"></a>断开连接</h3><p>断开连接后，socket将自动退出所有通道，并且不需要特别销毁。</p>
+<h2 id="从外部世界发送消息"><a href="#从外部世界发送消息" class="headerlink" title="从外部世界发送消息"></a>从外部世界发送消息</h2><p>在某些情况下，您可能希望将事件从Socket.IO进程之外发送到Socket.IO命名空间/房间的socket.io中。</p>
+<p>有几种方法可以解决这个问题，比如实现自己的通道道以将消息发送到进程中。</p>
+<p>为了方便这种情况下的使用，我们开发了两个模块：<br>-<a href="https://github.com/socketio/socket.io-redis" target="_blank" rel="noopener">socket.io-redis</a><br>-<a href="https://github.com/socketio/socket.io-emitter" target="_blank" rel="noopener">socket.io-emitter</a></p>
+<p>Redis Adapter的用法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(<span class="number">3000</span>);</span><br><span class="line"><span class="keyword">var</span> redis = <span class="built_in">require</span>(<span class="string">'socket.io-redis'</span>);</span><br><span class="line">io.adapter(redis(&#123; <span class="attr">host</span>: <span class="string">'localhost'</span>, <span class="attr">port</span>: <span class="number">6379</span> &#125;))</span><br></pre></td></tr></table></figure></p>
+<p>之后，你就可以从其他进程想任意通道emit消息<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io-emitter'</span>)(&#123; <span class="attr">host</span>: <span class="string">'127.0.0.1'</span>, <span class="attr">port</span>: <span class="number">6379</span> &#125;);</span><br><span class="line">setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  io.emit(<span class="string">'time'</span>, <span class="keyword">new</span> <span class="built_in">Date</span>);</span><br><span class="line">&#125;, <span class="number">5000</span>);</span><br></pre></td></tr></table></figure></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/05/18/socket-io官方文档翻译4/" class="pre-post btn btn-default" title="socket.io官方文档翻译4">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">socket.io官方文档翻译4</span>
+        </a>
+    
+    
+        <a href="/2019/05/18/socket-io官方文档翻译2/" class="next-post btn btn-default" title="socket.io官方文档翻译2">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">socket.io官方文档翻译2</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: ''.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#命名空间"><span class="toc-text">命名空间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#默认命名空间"><span class="toc-text">默认命名空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义命名空间"><span class="toc-text">自定义命名空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#房间"><span class="toc-text">房间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加入和离开"><span class="toc-text">加入和离开</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#默认房间"><span class="toc-text">默认房间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#断开连接"><span class="toc-text">断开连接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从外部世界发送消息"><span class="toc-text">从外部世界发送消息</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
