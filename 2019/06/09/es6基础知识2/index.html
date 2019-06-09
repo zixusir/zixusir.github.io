@@ -1,0 +1,331 @@
+<!DOCTYPE HTML>
+<html lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="ZIXU SPACE">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="块作用域,解构赋值,扩展运算,模板字符串">
+
+
+    <meta name="description" content="1. 块作用域作用域指的是变量的作用范围，js本身具有了全局作用域和函数作用域，es6中新增了块作用域。块作用域可以理解为由{}包含的代码所产生的作用范围
+es6中还新增了两种变量声明方式let...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>es6基础知识2 | ZIXU SPACE</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="ZIXU SPACE" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/img/bannerImg.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="John Xu">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">ZIXU SPACE</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/理财/"><i class="fa "></i>理财</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/数据/"><i class="fa "></i>数据</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="es6基础知识2">
+            
+	            es6基础知识2
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/前端/">前端</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/块作用域/">块作用域</a> <a class="tag-link" href="/tags/扩展运算/">扩展运算</a> <a class="tag-link" href="/tags/模板字符串/">模板字符串</a> <a class="tag-link" href="/tags/解构赋值/">解构赋值</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/06/09</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="1-块作用域"><a href="#1-块作用域" class="headerlink" title="1. 块作用域"></a>1. 块作用域</h1><p>作用域指的是变量的作用范围，js本身具有了全局作用域和函数作用域，es6中新增了块作用域。块作用域可以理解为由{}包含的代码所产生的作用范围</p>
+<p>es6中还新增了两种变量声明方式let和const，原来的var不支持块作用域</p>
+<blockquote>
+<p>var与let的区别<br>var支持变量声明预解析，不支持块作用域，允许重复声明<br>let不支持变量声明预解析，支持块作用域，不允许重复声明</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;  <span class="comment">//var 不支持 &#123;&#125;</span></span><br><span class="line">    <span class="keyword">let</span> b = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">const</span> c = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="built_in">console</span>.log(b);</span><br><span class="line"><span class="built_in">console</span>.log(c);</span><br></pre></td></tr></table></figure>
+<p>const不支持变量声明预解析，支持块作用域，不允许重复声明，并且是一个常量（值一旦确认，不允许修改），同时声明常量必需复制，不允许声明后再赋值。</p>
+<h1 id="2-解构赋值"><a href="#2-解构赋值" class="headerlink" title="2. 解构赋值"></a>2. 解构赋值</h1><p>解构赋值的含义是允许按照一定的模式从<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 2.1 数组解构</span><br><span class="line"></span><br><span class="line">数组解构的写法：</span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">let arr = [1, 2, 3];</span><br><span class="line"></span><br><span class="line">let [a, b, c] = arr; //提取数组中的值，并一一赋值给a,b,c</span><br><span class="line"></span><br><span class="line">console.log(a, b, c); //1 2 3</span><br></pre></td></tr></table></figure></p>
+<p>上面这种写法等价于：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = arr[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">let</span> b = arr[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">let</span> c = arr[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a, b, c);<span class="comment">//1 2 3</span></span><br></pre></td></tr></table></figure>
+<p>强调一点的是，使用数组解构需要值一一对应，比如说上面的那个例子，如果只是想把1,3赋值给a,b，那么应该这样写<code>[a, , c] = arr</code></p>
+<h2 id="2-2-对象解构"><a href="#2-2-对象解构" class="headerlink" title="2.2 对象解构"></a>2.2 对象解构</h2><p>对象解构的写法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; game, level &#125; = &#123; <span class="attr">game</span>: <span class="string">"bird"</span>, <span class="attr">level</span>: <span class="string">"king"</span> &#125;;  <span class="comment">// 左侧中变量的名称必须是右侧对象中存在的key，解构的顺序不需要对应</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(game, level);</span><br></pre></td></tr></table></figure>
+<p>对象解构需要注意变量中的名称需要和右边对象的键值（key值）对应，但是不要求顺序上对应。</p>
+<p>有时候，不想用对象的key值作为变量名，这个时候可以在左侧给变量取一个别名</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span>  &#123;<span class="attr">left</span>: L, <span class="attr">top</span>: T&#125; = &#123;<span class="attr">left</span>: <span class="number">100</span>, <span class="attr">top</span>: <span class="number">200</span>&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(L, T);<span class="comment">//100 200</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这段代码就相当于</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">left</span>: <span class="number">100</span>, <span class="attr">top</span>: <span class="number">200</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> L = obj.left;</span><br><span class="line"><span class="keyword">let</span> T = obj.top;</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-多重解构"><a href="#2-3-多重解构" class="headerlink" title="2.3 多重解构"></a>2.3 多重解构</h2><p>一个简单的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; <span class="attr">scores</span>: [english, math], year&#125; = &#123;<span class="attr">scores</span>: [<span class="number">99</span>, <span class="number">98</span>], <span class="number">2019</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这样的写法相当于：</span></span><br><span class="line"><span class="keyword">let</span> english = <span class="number">99</span>;</span><br><span class="line"><span class="keyword">let</span> math = <span class="number">98</span>;</span><br><span class="line"><span class="keyword">let</span> year= <span class="number">2019</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="3-扩展运算符"><a href="#3-扩展运算符" class="headerlink" title="3. 扩展运算符"></a>3. 扩展运算符</h1><p>扩展运算符的含义是将数组或者对象转化为参数序列，可以理解为将数组外面的<code>[]</code>和对象外面的<code>{}</code>去掉，然后将数组或者对象转化为<code>,</code>分隔的参数化序列</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 解构赋值可以这样来理解</span></span><br><span class="line">[<span class="string">'a‘,'</span>b<span class="string">','</span>c<span class="string">'] =&gt; '</span>a<span class="string">','</span>b<span class="string">','</span>c<span class="string">'</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#123;left:100, top:200&#125; =&gt; left: 100, top: 200</span></span><br></pre></td></tr></table></figure>
+<p>解构赋值的表示法是<code>...</code>，在一个对象或者数组前面加上<code>...</code>代表对其进行解构</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...arr表示 1，3 4</span></span><br></pre></td></tr></table></figure>
+<p>构赋值在一些函数的使用和对象、数组的合并方面非常好用，比如说想求得一个数组的最大值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 没有解构赋值的化可能需要这么做</span></span><br><span class="line"><span class="keyword">let</span> max = <span class="built_in">Math</span>.max(arr[<span class="number">0</span>], arr[<span class="number">1</span>], arr[<span class="number">2</span>], arr[<span class="number">3</span>], arr[<span class="number">4</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 有了解构赋值，就可以这样做：</span></span><br><span class="line"><span class="keyword">let</span> max = <span class="built_in">Math</span>.max(...arr)</span><br></pre></td></tr></table></figure>
+<p>使用解构赋值方便进行数组的合并</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> arr2 = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];</span><br><span class="line"><span class="keyword">let</span> arr3 = [...arr1, ...arr2]; <span class="comment">//arr3 = [1, 2, 3, 4, 5, 6]</span></span><br></pre></td></tr></table></figure>
+<p>包括对象的合并：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;<span class="attr">left</span>:<span class="number">100</span>, <span class="attr">top</span>: <span class="number">200</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;<span class="attr">width</span>: <span class="number">200</span>, <span class="attr">height</span>: <span class="number">200</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj3= &#123;</span><br><span class="line">    ...obj1,</span><br><span class="line">    ...obj2</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="4-模板字符串"><a href="#4-模板字符串" class="headerlink" title="4.模板字符串"></a>4.模板字符串</h1><p>模板字符串是es6新增的一种字符串表示法，区别于之前的<code>’</code>或者<code>”</code>便是字符串，模板字符串使用反引号`表示</p>
+<p>模板字符串有两个主要的作用，一是保持字符串格式，二是变量表达式解析：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 保持字符串的格式：</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">`</span></span><br><span class="line"><span class="string">&lt;ul&gt;</span></span><br><span class="line"><span class="string">    &lt;li&gt;&lt;/li&gt;</span></span><br><span class="line"><span class="string">&lt;/ul&gt;</span></span><br><span class="line"><span class="string">    &lt;h1&gt;<span class="subst">$&#123;<span class="number">1</span>+<span class="number">1</span>&#125;</span>&lt;/h1&gt;</span></span><br><span class="line"><span class="string">    &lt;div&gt;模板字符串&lt;/div&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span>; </span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(str);</span><br><span class="line"></span><br><span class="line"><span class="comment">//变量表达式解析</span></span><br><span class="line"><span class="keyword">let</span> score = <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印分数的话以前可能这么写：</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'your score is '</span> + score);</span><br><span class="line"><span class="comment">// 现在可以这样写：</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`your score is <span class="subst">$&#123;score&#125;</span>`</span>)</span><br></pre></td></tr></table></figure>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2019/05/30/第18章-构建自己的家庭资产配置方案/" class="next-post btn btn-default" title="第18章 构建自己的家庭资产配置方案">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">第18章 构建自己的家庭资产配置方案</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: ''.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-块作用域"><span class="toc-text">1. 块作用域</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-解构赋值"><span class="toc-text">2. 解构赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-对象解构"><span class="toc-text">2.2 对象解构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-多重解构"><span class="toc-text">2.3 多重解构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-扩展运算符"><span class="toc-text">3. 扩展运算符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-模板字符串"><span class="toc-text">4.模板字符串</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
