@@ -1,0 +1,319 @@
+<!DOCTYPE HTML>
+<html lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="ZIXU SPACE">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="迭代">
+
+
+    <meta name="description" content="1. 迭代器es6中新增了迭代器，迭代器是一种特殊的对象，它具有专门为迭代过程设计的接口。迭代器根据迭代协议来设计，每一个迭代器都包含了一个next()方法，在这个方法中给出了每一次的返回值va...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>es6基础知识3（迭代） | ZIXU SPACE</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="ZIXU SPACE" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/img/bannerImg.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="John Xu">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">ZIXU SPACE</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/理财/"><i class="fa "></i>理财</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/数据/"><i class="fa "></i>数据</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="es6基础知识3（迭代）">
+            
+	            es6基础知识3（迭代）
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/前端/">前端</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/迭代/">迭代</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/06/09</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="1-迭代器"><a href="#1-迭代器" class="headerlink" title="1. 迭代器"></a>1. 迭代器</h1><p>es6中新增了迭代器，迭代器是一种特殊的对象，它具有专门为迭代过程设计的接口。迭代器根据迭代协议来设计，每一个迭代器都包含了一个<code>next()</code>方法，在这个方法中给出了每一次的返回值<code>value</code>以及迭代时候完成的标记<code>done</code>。</p>
+<p>与迭代器对应的叫迭代对象，迭代对象指的就是可以被迭代的对象，也就是具有迭代器的对象，在es6中具体就指包含<code>Symbol.iterator</code>方法的对象。</p>
+<p> 迭代语句有两种，<code>for...in</code>和<code>for...of</code>，这两者的区别在于<code>for...in</code>以原始插入的顺序迭代对象的可枚举属性，<code>for...of</code>根据迭代对象的迭代器具体实现迭代对象数据.</p>
+<p>举一个简单的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'a'</span>, <span class="string">'b'</span> ,<span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> arr) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(attr, arr[attr]);</span><br><span class="line">&#125;<span class="comment">// 0 a</span></span><br><span class="line"> <span class="comment">// 1 b</span></span><br><span class="line"> <span class="comment">// 2 c</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(attr);</span><br><span class="line">&#125;<span class="comment">// a</span></span><br><span class="line"> <span class="comment">// b</span></span><br><span class="line"> <span class="comment">// c</span></span><br></pre></td></tr></table></figure>
+<p>这里要注意<code>for...in</code>和<code>for...of</code>的差异，<code>for...in</code>迭代的值书数组的索引，<code>for...of</code>迭代的值是数据每一想的值。</p>
+<p>数组arr能够进行迭代，或者说能够使用<code>for...in</code>和<code>for...of</code>的原因在于，数组对象自身带有了迭代器方法。</p>
+<p><img src="https://i.loli.net/2019/06/09/5cfc92ed66f1b33682.jpg" alt="迭代器"></p>
+<p>这里的symbol属性正是<code>属性私有化</code>的应用</p>
+<p>如果随意在一个对象上使用<code>for...in</code>或者<code>for...of</code>,这个对象没有迭代器的话，就会报错：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    left: <span class="number">100</span>;</span><br><span class="line">    top: <span class="number">200</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>( <span class="keyword">var</span> k <span class="keyword">of</span> obj) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(k);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2019/06/09/5cfd24377ad8519998.png" alt="对象没有迭代器"></p>
+<p>此时控制台显示对象是不可迭代的，原因就在于对象obj没有实现迭代器方法</p>
+<p>迭代器依据迭代协议来实现，可以为obj对象创建一个迭代器，从而把obj对象转化为可迭代对象，具体的写法:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    left: <span class="number">100</span>,</span><br><span class="line">    top: <span class="number">200</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 迭代协议</span></span><br><span class="line">obj[<span class="built_in">Symbol</span>.iterator] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> keys = <span class="built_in">Object</span>.keys(obj);    <span class="comment">//['left','top']</span></span><br><span class="line">    <span class="keyword">let</span> len = keys.length;</span><br><span class="line">    <span class="keyword">let</span> n = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        next: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="comment">//迭代器的关键于next函数</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (n &lt; len) &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;</span><br><span class="line">                    value: &#123;<span class="attr">k</span>: keys[n], <span class="attr">v</span>: obj[keys[n++]]&#125;,</span><br><span class="line">                    done: <span class="literal">false</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;</span><br><span class="line">                    done: <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过给原对象增添一个迭代器函数从而将一个普通对象转变为了可迭代对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> &#123;k, v&#125; <span class="keyword">of</span> obj) &#123; <span class="comment">//of 是一个可迭代的对象</span></span><br><span class="line">    <span class="built_in">console</span>.log(k, v);<span class="comment">// left 100</span></span><br><span class="line">                      <span class="comment">// top 200</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/06/16/es6基础知识3（函数拓展）/" class="pre-post btn btn-default" title="es6基础知识3（函数拓展）">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">es6基础知识3（函数拓展）</span>
+        </a>
+    
+    
+        <a href="/2019/06/09/es6基础知识2/" class="next-post btn btn-default" title="es6基础知识2">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">es6基础知识2</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: ''.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-迭代器"><span class="toc-text">1. 迭代器</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

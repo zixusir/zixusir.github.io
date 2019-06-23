@@ -1,0 +1,332 @@
+<!DOCTYPE HTML>
+<html lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="ZIXU SPACE">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="参数默认值,剩余参数,箭头函数">
+
+
+    <meta name="description" content="1. 函数参数默认值es6中关于函数的拓展主要有函数参数默认值、rest剩余函数、箭头函数。函数的拓展是es6中比较重要的一部分内容。
+es6之前，如果要设定函数的参数的默认值，需要通过编码来实...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>es6基础知识3（函数拓展） | ZIXU SPACE</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="ZIXU SPACE" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(/img/bannerImg.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="John Xu">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">ZIXU SPACE</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/理财/"><i class="fa "></i>理财</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/数据/"><i class="fa "></i>数据</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="es6基础知识3（函数拓展）">
+            
+	            es6基础知识3（函数拓展）
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/前端/">前端</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/剩余参数/">剩余参数</a> <a class="tag-link" href="/tags/参数默认值/">参数默认值</a> <a class="tag-link" href="/tags/箭头函数/">箭头函数</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/06/16</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="1-函数参数默认值"><a href="#1-函数参数默认值" class="headerlink" title="1. 函数参数默认值"></a>1. 函数参数默认值</h1><p>es6中关于函数的拓展主要有<code>函数参数默认值</code>、<code>rest剩余函数</code>、<code>箭头函数</code>。函数的拓展是es6中比较重要的一部分内容。</p>
+<p>es6之前，如果要设定函数的参数的默认值，需要通过编码来实现，也就是通过或符号<code>||</code>来实现，例如<code>var x = x || 100</code>, 这样就设置了x的默认值为100。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func1</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 通过||符号设置函数参数默认值，x为100，y为200</span></span><br><span class="line">    <span class="keyword">var</span> x = x || <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">var</span> y = y || <span class="number">200</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种方法非常不直观，有了es6之后，可以将函数参数的默认值写在形参后面,更加方便：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func2</span>(<span class="params">x = <span class="number">100</span>, y = <span class="number">200</span></span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>只是需要注意的是，这种写法最好将带有默认值的形参只能写在参数列表的最后面，也就是当函数有多个参数，而只有部分参数具有默认值时，这些参数只能写在参数列表的最后面：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func3</span>(<span class="params">a, b, c = <span class="number">100</span></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 这里a,b没有默认值，而c有一个默认值，所以把c写在最后面</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样做的原因主要是避免调用函数时可能产生的错误：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 加入将带有默认参数的形参写在前面</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func4</span>(<span class="params">c = <span class="number">100</span>, b, a</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果在调用函数的时候想使用c的默认值，不在第一参数位传参，这样写就会报错</span></span><br><span class="line">func4( , <span class="number">200</span>, <span class="number">100</span>)<span class="comment">// 报错</span></span><br></pre></td></tr></table></figure>
+<h1 id="2-剩余参数"><a href="#2-剩余参数" class="headerlink" title="2. 剩余参数"></a>2. 剩余参数</h1><p>假设有一种情况，我们想写一个求和函数来计算输入的<strong>任意多个参数</strong>的和，比如<code>sum(0, 1, 2, 3) = 6</code>, <code>sum(0, 1, 2, 3, 4, 5) = 15</code>。在es6之前，如果要实现这个功能，需要用到函数中的arguments对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> args = <span class="built_in">arguments</span>; <span class="comment">// 这里利用arguments对象拿到函数的实参，因此函数的形参没有意义，也就可以不用写</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> ret = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; args.length; i++) &#123;</span><br><span class="line">        ret = ret + args[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sum(<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">4</span>)); <span class="comment">// 11</span></span><br></pre></td></tr></table></figure>
+<p>虽然利用arguments对象可以解决任意多个参数这种问题，但毕竟显得不太直观，有了es6以后，这个问题就简单多了，我们可以使用剩余参数很方便的来解决这个问题。剩余参数的写法是在函数定义时在形参前面加上<code>...</code>符号，仍然用刚才的那个例子来说明：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumes6</span>(<span class="params">...newNumber</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> ret = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; newNumber.length; i++) &#123;</span><br><span class="line">        ret = ret + newNumber[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sumes6(<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">4</span>)); <span class="comment">// 11</span></span><br></pre></td></tr></table></figure>
+<p>剩余参数可以理解为把函数输入的实参源源不断的压入到函数的形参newNumber中，需要指出的是，这里可以采用数组的方法来访问到每一个传入的参数，但是newNumber实际上是一个对象而不是一个数组。</p>
+<h1 id="3-箭头函数"><a href="#3-箭头函数" class="headerlink" title="3. 箭头函数"></a>3. 箭头函数</h1><p>箭头函数是es6中新增的一种简单的函数表达式写法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 习惯的函数定义方式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func1</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 箭头函数写法</span></span><br><span class="line"><span class="keyword">let</span> func1 = <span class="function">(<span class="params">x, y</span>) =&gt;</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>箭头函数具有很多方便的特点，第一个是当箭头函数的参数有且只有一个的时候，箭头函数参数的<code>()</code>可以省略：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 有这样一个箭头函数</span></span><br><span class="line"><span class="keyword">let</span> func1 = <span class="function">(<span class="params">x</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> x + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个箭头函数的参数只有一个所以可以省略参数可括号()</span></span><br><span class="line"><span class="keyword">let</span> func1 = <span class="function"><span class="params">x</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> x + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意省略括号的情况是箭头函数的参数有且只有一个，所以当函数没有参数时，括号也不可以省略</span></span><br><span class="line"><span class="keyword">let</span> func2 = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">100</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第二个特点就是如果箭头函数的语句有且只有一条，那么<code>{}</code>也可以省略，并且这条语句如果是返回语句<code>return</code>，那么<code>return</code>也可以省略。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> func1 = <span class="function">(<span class="params">x</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> x + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 上面这样一个函数就可以简写为</span></span><br><span class="line"><span class="keyword">let</span> func1 = <span class="function"><span class="params">x</span> =&gt;</span> x + <span class="number">1</span>;<span class="comment">// 这种情况下，语句执行的结果就是返回值</span></span><br></pre></td></tr></table></figure>
+<p>需要注意的是，如果这唯一的一条语句返回的是一个字面量对象，那么箭头函数的<code>{}</code>依然不可以省略</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> func1 = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        x: <span class="number">100</span>,</span><br><span class="line">        y: <span class="number">200</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="comment">// 这种情况下函数体的括号是不可省略的，也就是不可以书写成下面的形式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> func1 = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    x: <span class="number">100</span>,</span><br><span class="line">    y: <span class="number">200</span></span><br><span class="line">&#125;<span class="comment">//这样的写法是错误的</span></span><br></pre></td></tr></table></figure>
+<p>箭头函数的另一个特点是，箭头函数内部的<code>this</code>在函数的创建期就完成了绑定。<code>this</code>的绑定就像<code>js</code>玄幻小说，简直是让人琢磨不透，对于大部分的普通函数，他们的<code>this</code>在执行期绑定，下面这样一个栗子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;title&gt;箭头函数&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;button&gt;按钮一&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">  &lt;button&gt;按钮二&lt;/</span>button&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">changeColor</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.style.color = <span class="string">'red'</span>;<span class="comment">// 在函数定义的时候并不知道this指向谁</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> btns = <span class="built_in">document</span>.querySelectorAll(<span class="string">'button'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; btns.length; i++) &#123;</span><br><span class="line">      btns[i].onclick = changeColor</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面这个例子中给两个按钮都绑定了同一个事件函数<code>changeColor</code>，函数在创建的时候并没有确定<code>this</code>指向谁，只有当用户点击了按钮，确定了点用<code>changeColor</code>的对象时，才能明确<code>this</code>的指向，所以这样一个粒子的效果就是用户点击那一个按钮，那个按钮就改变颜色。</p>
+<p>![普通函数的this在执行期确定](<a href="https://s2.ax1x.com/2019/06/23/ZPXhm8.png" target="_blank" rel="noopener">https://s2.ax1x.com/2019/06/23/ZPXhm8.png</a></p>
+<p>接下来利用箭头函数重写上面的那个粒子:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;title&gt;箭头函数&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;button&gt;按钮一&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">  &lt;button&gt;按钮二&lt;/</span>button&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    <span class="comment">// function changeColor () &#123;</span></span><br><span class="line">    <span class="comment">//   this.style.color = 'red';</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="keyword">let</span> changeColor = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.style.color = <span class="string">'red'</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> btns = <span class="built_in">document</span>.querySelectorAll(<span class="string">'button'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; btns.length; i++) &#123;</span><br><span class="line">      btns[i].onclick = changeColor</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后在浏览器中执行，发现这一次并没有实现点击按钮，按钮改变颜色的功能，并且函数还爆出了错误<code>箭头函数.html:16 Uncaught TypeError: Cannot set property &#39;color&#39; of undefinedat HTMLButtonElement.changeColor</code>，这个时候在控制台中打印出<code>this</code>发现此时<code>this</code>指向的是<code>window</code>对象。</p>
+<p><img src="https://s2.ax1x.com/2019/06/23/ZPx6fJ.png" alt="箭头函数的this在函数定义的时候就已经确定了"></p>
+<p>推荐的学习书籍，可以通过淘宝扫描直接购买：</p>
+<p><img src="https://s2.ax1x.com/2019/06/23/ZFRyz4.png" alt="es6标准入门"></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2019/06/09/es6基础知识3（迭代）/" class="next-post btn btn-default" title="es6基础知识3（迭代）">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">es6基础知识3（迭代）</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: ''.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-函数参数默认值"><span class="toc-text">1. 函数参数默认值</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-剩余参数"><span class="toc-text">2. 剩余参数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-箭头函数"><span class="toc-text">3. 箭头函数</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
